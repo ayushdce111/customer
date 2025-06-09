@@ -1,0 +1,11 @@
+render
+------
+Set the Publish directory to: dist
+
+vite.config.js
+-----------
+export default {
+  build: {
+    outDir: 'dist', // <- should be this (default)
+  },
+};
