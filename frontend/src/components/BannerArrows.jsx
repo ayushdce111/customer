@@ -9,6 +9,7 @@ export const NextArrow = (props) => {
       style={{
         position: 'absolute',
         right: '10px',
+        right:'5rem',
         top: '50%',
         transform: 'translateY(-50%)',
         zIndex: 1,
@@ -29,7 +30,7 @@ export const PrevArrow = (props) => {
       onClick={onClick}
       style={{
         position: 'absolute',
-        left: '10px',
+        left: '5rem',
         top: '50%',
         transform: 'translateY(-50%)',
         zIndex: 1,

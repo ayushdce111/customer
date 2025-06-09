@@ -1,0 +1,8 @@
+.slick-dots li button:before {
+  color: #fff; /* or your color */
+  font-size: 10px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: cyan; /* Active dot color */
+}
