@@ -4,7 +4,10 @@ import Header from './components/Header.jsx';
 import Topheader from './components/Topheader.jsx';
 import './App.css';
 import Sidebar from "./components/Sidebar.jsx";
-import LoginSignup from "./components/LoginSignup.jsx"
+import LoginSignup from "./components/LoginSignup.jsx";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 
 function App() {
     
