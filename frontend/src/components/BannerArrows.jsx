@@ -8,7 +8,7 @@ export const NextArrow = (props) => {
       onClick={onClick}
       style={{
         position: 'absolute',
-        right: '10px',
+        // right: '10px',
         right:'5rem',
         top: '50%',
         transform: 'translateY(-50%)',
