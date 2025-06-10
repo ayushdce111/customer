@@ -1,10 +1,10 @@
 const User = require('../models/User');
 const { registerSchema, loginSchema } = require('../validations/authValidation');
 
-exports.register = async (req, res) => {
+const register = async (req, res) => {
   const { error } = registerSchema.validate(req.body);
   if (error) return res.status(400).json({ error: error.details[0].message });
-
+// console.log(req.body);
   const { name, email, password } = req.body;
 
   try {
@@ -19,7 +19,7 @@ exports.register = async (req, res) => {
   }
 };
 
-exports.login = async (req, res) => {
+const login = async (req, res) => {
   const { error } = loginSchema.validate(req.body);
   if (error) return res.status(400).json({ error: error.details[0].message });
 
@@ -37,3 +37,7 @@ exports.login = async (req, res) => {
   }
 };
 
+module.exports = {
+    register,
+    login
+}

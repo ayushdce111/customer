@@ -7,6 +7,8 @@ import Sidebar from "./components/Sidebar.jsx";
 import LoginSignup from "./components/LoginSignup.jsx";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -25,7 +27,7 @@ function App() {
     <Banner />
     {showSidebar && <Sidebar SidebarProps={SidebarProps}/> }
     {showLoginSignup && <LoginSignup LoginSignupProps={LoginSignupProps}/> }
-
+      <ToastContainer />
     </>
   )
 }
