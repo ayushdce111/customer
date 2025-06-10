@@ -65,6 +65,7 @@ const handleLoginSubmit = async (e)=> {
       toast.success('Login successful');
       // onLogin();
       navigate('/UserProfile');
+      setLoginSignup(false);
     } catch (err) {
       toast.error(err.response?.data?.error || 'Login failed');
     }

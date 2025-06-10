@@ -23,10 +23,22 @@ function App() {
     const LoginSignupProps = [ setLoginSignup ];
 
     const [isLoggedIn,setisLoggedIn]=useState(false);
+        const [userData,setuserData]=useState("");
 
 useEffect(()=>{
-  setisLoggedIn(true)
-})
+
+  const isLoggedInVar = localStorage.getItem('isLoggedIn');
+  
+  if(isLoggedInVar==="true"){
+        setisLoggedIn(true);
+    }
+
+    const userData = localStorage.getItem('user');
+  setuserData(userData);
+},[])
+useEffect(()=>{
+  console.log(isLoggedIn,"<-------------isLoggedIn---",userData)
+},[isLoggedIn])
   return (
   
     <BrowserRouter>
@@ -34,24 +46,26 @@ useEffect(()=>{
     <Header HeaderProps={HeaderProps}/>
     <Routes>
       <Route path="/" element={<Homepage />}/>
+      
         <Route
           path="/UserProfile"
           element={
             isLoggedIn===true ? (
-              <UserProfile />
+              <UserProfile userData={userData} />
             ) : (
               <Navigate to="/" />
               
             )
           }
         />
+              {console.log(isLoggedIn,"<-----------isLoggedIn BOTTOM")}
       </Routes>
 
     
     {showSidebar && <Sidebar SidebarProps={SidebarProps}/> }
     {showLoginSignup && <LoginSignup LoginSignupProps={LoginSignupProps}/> }
       <ToastContainer />
-      
+
       </BrowserRouter>
   
   )
