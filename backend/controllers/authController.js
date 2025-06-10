@@ -20,6 +20,7 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
+console.log(req.body,"<--------------req.body");
   const { error } = loginSchema.validate(req.body);
   if (error) return res.status(400).json({ error: error.details[0].message });
 

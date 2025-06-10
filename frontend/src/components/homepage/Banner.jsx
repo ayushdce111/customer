@@ -3,10 +3,10 @@ import { FaCalendarAlt, FaChevronDown } from 'react-icons/fa'
 import { FaLocationDot } from 'react-icons/fa6';
 import Slider from 'react-slick';
 import {NextArrow,PrevArrow} from "./BannerArrows.jsx";
-import bannerdemo from "../assets/images/bannerdemo.png";
-import bannerdemo1 from "../assets/images/bannerdemo1.png";
-import bannerdemo2 from "../assets/images/bannerdemo2.png";
-import "../assets/css/Banner.css"
+import bannerdemo from "../../assets/images/bannerdemo.png";
+import bannerdemo1 from "../../assets/images/bannerdemo1.png";
+import bannerdemo2 from "../../assets/images/bannerdemo2.png";
+import "../../assets/css/Banner.css"
 
 const settings = {
     dots: true,

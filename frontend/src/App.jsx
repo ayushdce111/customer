@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import Banner from './components/Banner.jsx';
+import { useEffect, useState } from 'react'
+import Homepage from './components/homepage/Homepage.jsx';
+import UserProfile from "./components/UserProfile.jsx";
 import Header from './components/Header.jsx';
 import Topheader from './components/Topheader.jsx';
 import './App.css';
@@ -9,6 +10,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 
 function App() {
@@ -20,15 +22,38 @@ function App() {
     const SidebarProps = [ setShowSidebar,showSidebar ];
     const LoginSignupProps = [ setLoginSignup ];
 
+    const [isLoggedIn,setisLoggedIn]=useState(false);
+
+useEffect(()=>{
+  setisLoggedIn(true)
+})
   return (
-    <>
+  
+    <BrowserRouter>
     <Topheader/>
     <Header HeaderProps={HeaderProps}/>
-    <Banner />
+    <Routes>
+      <Route path="/" element={<Homepage />}/>
+        <Route
+          path="/UserProfile"
+          element={
+            isLoggedIn===true ? (
+              <UserProfile />
+            ) : (
+              <Navigate to="/" />
+              
+            )
+          }
+        />
+      </Routes>
+
+    
     {showSidebar && <Sidebar SidebarProps={SidebarProps}/> }
     {showLoginSignup && <LoginSignup LoginSignupProps={LoginSignupProps}/> }
       <ToastContainer />
-    </>
+      
+      </BrowserRouter>
+  
   )
 }
 
