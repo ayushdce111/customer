@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Homepage from './components/homepage/Homepage.jsx';
-import UserProfile from "./components/UserProfile.jsx";
+import UserProfile from "./components/user/UserProfile.jsx";
 import Header from './components/Header.jsx';
 import Topheader from './components/Topheader.jsx';
 import './App.css';
@@ -18,27 +18,20 @@ function App() {
     const[showSidebar,setShowSidebar]= useState(false);
     const[showLoginSignup,setLoginSignup]= useState(false);
 
-    const HeaderProps = [ setShowSidebar,setLoginSignup ];
-    const SidebarProps = [ setShowSidebar,showSidebar ];
-    const LoginSignupProps = [ setLoginSignup ];
-
-    const [isLoggedIn,setisLoggedIn]=useState(false);
+      const [isLoggedIn,setisLoggedIn]=useState(false);
         const [userData,setuserData]=useState("");
 
-useEffect(()=>{
+    const HeaderProps = [ setShowSidebar,setLoginSignup,isLoggedIn ];
+    const SidebarProps = [ setShowSidebar,showSidebar ];
+    const LoginSignupProps = [ setLoginSignup,setisLoggedIn,setuserData ];
 
-  const isLoggedInVar = localStorage.getItem('isLoggedIn');
-  
-  if(isLoggedInVar==="true"){
-        setisLoggedIn(true);
-    }
+    const isLoggedInVar = localStorage.getItem('isLoggedIn');
+    //   if(isLoggedInVar==="true"){
+    //     setisLoggedIn(true);
+    // }
+const userDataVar = localStorage.getItem('user');
 
-    const userData = localStorage.getItem('user');
-  setuserData(userData);
-},[])
-useEffect(()=>{
-  console.log(isLoggedIn,"<-------------isLoggedIn---",userData)
-},[isLoggedIn])
+
   return (
   
     <BrowserRouter>
@@ -50,15 +43,15 @@ useEffect(()=>{
         <Route
           path="/UserProfile"
           element={
-            isLoggedIn===true ? (
-              <UserProfile userData={userData} />
+            isLoggedInVar==="true" ? (
+              <UserProfile userData={userDataVar} />
             ) : (
               <Navigate to="/" />
               
             )
           }
         />
-              {console.log(isLoggedIn,"<-----------isLoggedIn BOTTOM")}
+              {console.log(isLoggedInVar,"<-----------isLoggedIn BOTTOM--",userDataVar)}
       </Routes>
 
     

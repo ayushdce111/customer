@@ -16,7 +16,7 @@ const LoginSignup = ({LoginSignupProps}) => {
 
   const navigate = useNavigate();
 
-  const[setLoginSignup]=LoginSignupProps;
+  const[setLoginSignup,setisLoggedIn,setuserData]=LoginSignupProps;
     const [isLogin, setIsLogin] = useState(true);
 
 
@@ -58,7 +58,7 @@ const handleLoginSubmit = async (e)=> {
 // console.log(setLoginForm,"<----------LOGIN");
       const res = await API.post('/auth/login', loginform);
       const user = res.data.user;
-
+console.log(res.data.user,"<------------USER DATA LOGIN/SIGNUP")
       localStorage.setItem('isLoggedIn', 'true');
       localStorage.setItem('user', JSON.stringify(user));
 
@@ -66,6 +66,8 @@ const handleLoginSubmit = async (e)=> {
       // onLogin();
       navigate('/UserProfile');
       setLoginSignup(false);
+      // setisLoggedIn(true);
+      // setuserData(res.data.user);
     } catch (err) {
       toast.error(err.response?.data?.error || 'Login failed');
     }
